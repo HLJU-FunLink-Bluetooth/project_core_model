@@ -3,14 +3,6 @@ package com.hlju.funlinkbluetooth.core.model
 sealed interface NearbyError {
     val displayMessage: String
 
-    data class Validation(val message: String) : NearbyError {
-        override val displayMessage: String = message
-    }
-
-    data class Conflict(val message: String) : NearbyError {
-        override val displayMessage: String = message
-    }
-
     data class Auth(val detail: String? = null) : NearbyError {
         override val displayMessage: String = "认证失败${detail?.let { "：$it" }.orEmpty()}"
     }
